@@ -44,7 +44,7 @@ class Item(models.Model):
 
 class Menu(models.Model):
       title = models.CharField(max_length=25, default='')
-      # mitem = models.ManyToManyField(to=Item)
+      mitem = models.ManyToManyField(to=Item)
       # mmanager = models.ForeignKey('Manager',on_delete=models.DO_NOTHING, default='')
       
       def __str__(self):
