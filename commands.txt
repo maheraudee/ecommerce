@@ -1,0 +1,25 @@
+pip install django 
+django-admin startproject core .
+
+#create database tables
+CREATE DATABASE ecommerce;
+CREATE USER 'ecommerce'@'localhost' IDENTIFIED BY 'Secret_1234';
+GRANT ALL PRIVILEGES ON `ecommerce` . * TO 'ecommerce'@'localhost';
+FLUSH PRIVILEGES;
+
+
+#configure connection to mysql database
+
+DATABASES = {
+    'default': {
+        'ENGINE'  : 'django.db.backends.mysql', # <-- UPDATED line 
+        'NAME'    : 'ecommerce',                 # <-- UPDATED line 
+        'USER'    : 'ecommerce',                     # <-- UPDATED line
+        'PASSWORD': 'Secret_1234',              # <-- UPDATED line
+        'HOST'    : 'localhost',                # <-- UPDATED line
+        'PORT'    : '3306',
+    }
+}
+
+py manage.py createsuperuser
+
