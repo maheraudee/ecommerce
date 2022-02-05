@@ -119,6 +119,10 @@
                     <div class="heading-menu">
                         <h3 class="text-center mb-5">Breakfast</h3>
                     </div>
+                    {% for menu in menus %}
+                    <!-- {{% if menu.code = "Breakfast" %}} -->
+                    {{% for item in menu.mitem %}}
+
                     <div class="menus d-flex align-items-center">
                         <div class="menu-img rounded-circle">
                             <img class="img-fluid" src="{% static 'img/breakfast-1.jpg' %}" alt="">
@@ -126,52 +130,24 @@
                         <div class="text-wrap">
                             <div class="row align-items-start">
                                 <div class="col-8">
-                                    <h4>Egg Sandwich</h4>
+                                    <h4>{{item}}</h4>
                                 </div>
                                 <div class="col-4">
-                                    <h4 class="text-muted menu-price">$30</h4>
+                                    <h4 class="text-muted menu-price">${{item.price}}</h4>
                                 </div>
                             </div>
-                            <p>Meat Ball, Mie</p>
+                            <p>{{item.ingredients}}</p>
                         </div>
                     </div>
-                    <div class="menus d-flex align-items-center">
-                        <div class="menu-img rounded-circle">
-                            <img class="img-fluid" src="{% static 'img/breakfast-1.jpg' %}" alt="">
-                        </div>
-                        <div class="text-wrap">
-                            <div class="row align-items-start">
-                                <div class="col-8">
-                                    <h4>Egg Sandwich</h4>
-                                </div>
-                                <div class="col-4">
-                                    <h4 class="text-muted menu-price">$30</h4>
-                                </div>
-                            </div>
-                            <p>Meat Ball, Mie</p>
-                        </div>
-                    </div>
-                    <div class="menus d-flex align-items-center">
-                        <div class="menu-img rounded-circle">
-                            <img class="img-fluid" src="{% static 'img/breakfast-1.jpg' %}" alt="">
-                        </div>
-                        <div class="text-wrap">
-                            <div class="row align-items-start">
-                                <div class="col-8">
-                                    <h4>Egg Sandwich</h4>
-                                </div>
-                                <div class="col-4">
-                                    <h4 class="text-muted menu-price">$30</h4>
-                                </div>
-                            </div>
-                            <p>Meat Ball, Mie</p>
-                        </div>
-                    </div>
+                    {% endif %}
+                    {% endfor %}
+
+
                 </div>
 
-                <div class="col-lg-4 menu-wrap">
+                <!-- <div class="col-lg-4 menu-wrap">
                     <div class="heading-menu">
-                        <h3 class="text-center mb-5">Breakfast</h3>
+                        <h3 class="text-center mb-5">Lunch</h3>
                     </div>
                     <div class="menus d-flex align-items-center">
                         <div class="menu-img rounded-circle">
@@ -225,7 +201,7 @@
 
                 <div class="col-lg-4 menu-wrap">
                     <div class="heading-menu">
-                        <h3 class="text-center mb-5">Breakfast</h3>
+                        <h3 class="text-center mb-5">Dinner</h3>
                     </div>
                     <div class="menus d-flex align-items-center">
                         <div class="menu-img rounded-circle">
@@ -275,7 +251,7 @@
                             <p>Meat Ball, Mie</p>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

@@ -38,6 +38,12 @@ class Item(models.Model):
       title = models.CharField(default='', max_length=15)
       ingredients = models.TextField(default='', max_length=1000)
       price = models.IntegerField(default=0)
+#       status_list = [
+#       ('Breakfast','Breakfast'),
+#       ('Lunch', 'Lunch'),
+#       ('Dinner', 'Dinner')
+#     ]
+#       status = models.CharField(max_length=10,default='Breakfast', choices=status_list)
       # imenu= models.ManyToManyField(to='Menu', blank=True)
       def __str__(self):
             return self.title
@@ -45,6 +51,13 @@ class Item(models.Model):
 class Menu(models.Model):
       title = models.CharField(max_length=25, default='')
       mitem = models.ManyToManyField(to=Item)
+      code_list = [
+      ('Breakfast','Breakfast'),
+      ('Lunch', 'Lunch'),
+      ('Dinner', 'Dinner')
+    ]
+      code = models.CharField(max_length=10,default='Breakfast', choices=code_list)
+      # imenu= models.ManyToManyField(to='Menu', blank=True)
       # mmanager = models.ForeignKey('Manager',on_delete=models.DO_NOTHING, default='')
       
       def __str__(self):

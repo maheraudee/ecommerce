@@ -1,5 +1,7 @@
+from tkinter import Menu
 from django.shortcuts import render
 
+from .models import Item,Menu
 # Create your views here.
 
 
@@ -14,4 +16,10 @@ def team(request):
 def special_dishes(request):
     return render(request,"cafe/special-dishes.html")
 def menu(request):
-    return render(request,"cafe/menu.html")
+    # items = Item.objects.all()
+    menus = Menu.objects.search(code='Breakfast')
+    context={
+    'menus': menus
+    }
+    
+    return render(request,"cafe/menu.html",context)
