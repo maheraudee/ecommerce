@@ -37,3 +37,10 @@ git push -u origin main
 git remote add origin https://github.com/maheraudee/ecommerce.git
 git branch -M main
 git push -u origin main
+
+# to pull branch 
+git pull https://github.com/maheraudee/ecommerce.git 
+# to test what branch 
+git branch      # see current branch
+git branch -r   # see remote branch
+git branch -a  # see all branchs
