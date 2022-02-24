@@ -44,3 +44,5 @@ git pull https://github.com/maheraudee/ecommerce.git
 git branch      # see current branch
 git branch -r   # see remote branch
 git branch -a  # see all branchs
+
+git rm -r --cached .  # remove cached for commit
