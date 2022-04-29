@@ -49,7 +49,7 @@ class Item(models.Model):
             return self.title
 
 class Menu(models.Model):
-      title = models.CharField(max_length=25, default='')
+      title = models.CharField(max_length=50, default='')
       mitem = models.ManyToManyField(to=Item)
       code_list = [
       ('Breakfast','Breakfast'),
