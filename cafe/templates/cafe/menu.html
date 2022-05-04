@@ -121,7 +121,7 @@
 
                             <div class="menus d-flex align-items-center">
                                 <div class="menu-img rounded-circle">
-                                    <img class="img-fluid" src="{% static 'img/breakfast-1.jpg' %}" alt="">
+                                    <img class="img-fluid" src='{{item.image.url}}' alt="">
                                 </div>
                                 <div class="text-wrap">
                                     <div class="row align-items-start">
@@ -149,7 +149,7 @@
 
                             <div class="menus d-flex align-items-center">
                                 <div class="menu-img rounded-circle">
-                                    <img class="img-fluid" src="{% static 'img/breakfast-1.jpg' %}" alt="">
+                                    <img class="img-fluid" src='{{item.image.url}}' alt="">
                                 </div>
                                 <div class="text-wrap">
                                     <div class="row align-items-start">
@@ -170,13 +170,13 @@
                         </div>
                         <div class="col-lg-4 menu-wrap">
                             <div class="heading-menu">
-                                <h3 class="text-center mb-5">Lunch</h3>
+                                <h3 class="text-center mb-5">Dinner</h3>
                             </div>
                             {% for menu in menus %} {% if menu.code == "Dinner" %} {% for item in menu.mitem.all %}
 
                             <div class="menus d-flex align-items-center">
                                 <div class="menu-img rounded-circle">
-                                    <img class="img-fluid" src="{% static 'img/breakfast-1.jpg' %}" alt="">
+                                    <img class="img-fluid" src='{{item.image.url}}' alt="">
                                 </div>
                                 <div class="text-wrap">
                                     <div class="row align-items-start">

@@ -1,3 +1,5 @@
+from distutils.command.upload import upload
+from email.policy import default
 from django.db import models
 
 # Create your models here.
@@ -33,11 +35,15 @@ class Order(models.Model):
     
     def __str__(self):
         return self.customer.fname + ' ' + self.oid
+def image_upload(instance, filename):
+      imagenaeme , extention = filename.split(".")
+      return "Items/%s.%s"%( instance.id, extention)
 
 class Item(models.Model):
       title = models.CharField(default='', max_length=15)
       ingredients = models.TextField(default='', max_length=1000)
       price = models.IntegerField(default=0)
+      image = models.ImageField(upload_to=image_upload, default='')
 #       status_list = [
 #       ('Breakfast','Breakfast'),
 #       ('Lunch', 'Lunch'),
