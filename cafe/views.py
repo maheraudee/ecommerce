@@ -2,6 +2,8 @@ from multiprocessing import context
 from tkinter import Menu
 from django.shortcuts import render
 
+from .form import ApplyForm
+
 from .models import Item,Menu,Order,Customer,Worker,Person
 # Create your views here.
 
@@ -11,7 +13,17 @@ def about(request):
 def home(request):
     return render(request,"cafe/home.html")
 def reservation(request):
-    return render(request,"cafe/reservation.html")
+    
+    if request.method == 'POST':
+        form = ApplyForm(request.POST)
+        if form.is_valid():
+            myform = form.save()
+    else:
+        form = ApplyForm()
+
+    context = {'form': form}
+
+    return render(request,"cafe/reservation.html",context)
 def team(request):
     workers = Worker.objects.all()
     context={

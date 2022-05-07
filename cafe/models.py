@@ -1,6 +1,9 @@
 from distutils.command.upload import upload
+from email import message
 from email.policy import default
+from unittest.util import _MAX_LENGTH
 from django.db import models
+from django.utils.timezone import datetime, now
 
 # Create your models here.
 import datetime
@@ -22,8 +25,11 @@ class Order(models.Model):
     # oitem = models.ManyToManyField(to='Item')
     customer = ForeignKey('Customer',on_delete=models.CASCADE, default='')
     worker = ForeignKey('Worker',on_delete=models.CASCADE, default='', blank=True, null=True)
-    odate = models.DateField( blank=True, default=datetime.datetime.now().date())
-    otime = models.TimeField( blank=True, default=datetime.datetime.now().time())
+#     odate = models.DateField( blank=True, default=datetime.datetime.now().date())
+    odate = models.DateField( blank=True, auto_now=False,auto_now_add=False, )
+#     otime = models.TimeField( blank=True, default=datetime.datetime.now().time())
+    otime = models.TimeField( blank=True, auto_now=False,auto_now_add=False)
+    iotem = models.ManyToManyField(to='Item')
     status_list = [
       ('queued','queued'),
       ('serving', 'serving'),
@@ -93,3 +99,16 @@ class Customer(models.Model):
       email = models.EmailField(max_length=254,blank=True, null=True) #null=True Django will store empty values as NULL in the database , blank=True the field is allowed to be blank
       def __str__(self):
             return self.fname +'_' + self.lname +'_' + self.telephone
+
+
+
+class Reserve(models.Model):
+      name = models.CharField(max_length = 100,default='')
+      email = models.EmailField(max_length=150,default='')
+      message = models.TextField(max_length=500, default='')
+      date = models.DateField( auto_now=False, auto_now_add=False)
+      time = models.TimeField(auto_now=False, auto_now_add=False)
+      
+      nperson = models.IntegerField( default=1)
+      def __str__(self):
+            return self.name
