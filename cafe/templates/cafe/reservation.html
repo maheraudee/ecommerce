@@ -4,11 +4,11 @@
   
 
 {% load static %}
-{% load django_bootstrap5 %}
 
-{# Load CSS and JavaScript #}
+{% load bootstrap4 %}
 {% bootstrap_css %}
-{% bootstrap_javascript %}
+{% bootstrap_javascript jquery='full' %}
+{{ form.media }}
 
 {# Display django.contrib.messages as Bootstrap alerts #}
 {% bootstrap_messages %}
@@ -121,6 +121,7 @@
                             Book Now
                         </h2>
                     </div>
+                    
                     <form method="post" name="contact-us" action="" class="form">
                         {% comment %} <div class="row">
                             <div class="col-md-12 form-group">
